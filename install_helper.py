@@ -24,6 +24,11 @@ if __name__ == '__main__':
         search_os = 'win32'
         search_arch = ''
 
+    # Exit if we don't know what to search for.
+    if not search_os:
+        sys.stderr.write('Unknown OS "%s"\n' % my_os)
+        exit(1)
+
     # Read the JSON payload from stdin; we only care about the assets for
     # zipfile downloads.
     payload = json.load(sys.stdin)

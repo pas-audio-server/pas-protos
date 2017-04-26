@@ -56,6 +56,7 @@ enum Type {
 	TWO_INTEGERS = 26;				// -na-
 	TWO_STRINGS = 27;				// -na-
 	ERROR_MESSAGE = 28;				//	OneInteger
+	SELECT_QUERY_EXPANDED = 29;		// -na-
 }
 
 //-----------------------------------------------------------------
@@ -184,6 +185,14 @@ message WhatDeviceCommand {
 	uint64 device_id = 2;
 }
 
+// A OneString is expected back.
+// Can be replaced with OneInteger
+
+message WhenDeviceCommand {
+	Type type = 1; 
+	uint64 device_id = 2;
+}
+
 // A OneInteger is expected back.
 // Can be replaced by GenericPB
 
@@ -214,9 +223,10 @@ message SelectQuery {
 	string pattern = 3;
 }
 
-// A OneString is expected back.
-message WhenDeviceCommand {
-	Type type = 1; 
-	uint64 device_id = 2;
+message SelectQueryExpanded {
+	Type type = 1;
+	string column = 2;
+	string pattern = 3;
+	string orderby = 4;
+	string nspace = 5;
 }
-

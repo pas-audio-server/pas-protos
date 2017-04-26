@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-PROTO_SRCS=./src/*.proto
+# Exit with failure immediately if anything below fails.
+set -e
+
+# Constants.
+readonly PROTO_SRCS=./src/*.proto
 
 # Are we in the project root (that has proto definitions)?
 ls .git $PROTO_SRCS &> /dev/null;

@@ -57,6 +57,8 @@ enum Type {
 	TWO_STRINGS = 27;				// -na-
 	ERROR_MESSAGE = 28;				//	OneInteger
 	SELECT_QUERY_EXPANDED = 29;		// -na-
+	GET_ROOT_OF_NAMESPACE = 30;		// OneString
+	GET_FOLDER = 31;				// -na-
 }
 
 //-----------------------------------------------------------------
@@ -223,10 +225,28 @@ message SelectQuery {
 	string pattern = 3;
 }
 
+// If nspace is blank, "default" will be used.
+// If orderby is blank, column will be used.
 message SelectQueryExpanded {
 	Type type = 1;
 	string column = 2;
 	string pattern = 3;
 	string orderby = 4;
 	string nspace = 5;
+}
+
+// If nspace is blank, "default" will be used.
+// The id of the TLDirectory is returned.
+message GetRootOfNamespace {
+	Type type = 1;
+	string nspace = 2;	
+}
+
+// If nspace is blank, "default" will be used.
+// SelectResults come back with tracks and subfolders marked
+// as such.
+message GetFolder {
+	Type type = 1;
+	string nspace = 2;
+	uint64 id = 3;
 }

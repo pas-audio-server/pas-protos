@@ -41,6 +41,12 @@ if [ $? -eq 0 ]; then
     go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
     OK=$? || $OK
 
+    if [ $OK -eq 0 ]; then
+        echo "Success."
+    else
+        echo "Failure."
+    fi
+
     exit $OK
 else
     echo "No zipfile download link could be found for your platform!"
